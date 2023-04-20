@@ -1,0 +1,86 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              01/01/2023 14:34:22 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\Keil\MDK\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND 
+                    -PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /*实现功能：
+   2           *1.按键1按下LED灯亮
+   3           *2.按键2按下LED灯左流水
+   4           *3.按键3按下LED灯右流水
+   5           *4.按键4按下LED灯全灭,退出
+   6          */
+   7          
+   8          //备注：功能基本实现，但是功能4，不灵敏，用中断应该更好
+   9          #include <REGX52.H>
+  10          #include <INTRINS.H>
+  11          #include "Delay.h"
+  12          #include "getKeyNum.h"
+  13          
+  14          
+  15          //寄存器定义
+  16          sfr LED=0XA0;
+  17          
+  18          void main(void)
+  19          {
+  20   1        while(1)
+  21   1        {
+  22   2          unsigned int key=getKeyNum();
+  23   2          //功能1
+  24   2          if(key==1){LED=0X00;}
+  25   2          //功能2
+  26   2          if(key==2)
+  27   2          {
+  28   3            LED=0XFE;
+  29   3            while(1)
+  30   3            {
+  31   4              Delay(500);
+  32   4              LED=_crol_(LED,1);
+  33   4              Delay(500);
+  34   4              if((key=getKeyNum())==4)//4号键按下，退出循环灯全灭
+  35   4              {
+  36   5                goto out;
+  37   5              }
+  38   4            }
+  39   3          }
+  40   2          //功能3
+  41   2          if(key==3)
+  42   2          {
+  43   3            LED=0XFE;
+  44   3            while(1)
+  45   3            {
+  46   4              Delay(500);
+  47   4              LED=_cror_(LED,1);
+  48   4              Delay(500);
+  49   4              if((key=getKeyNum())==4)//4号键按下，退出循环灯全灭
+  50   4              {
+  51   5                goto out;
+  52   5              }
+  53   4            }
+  54   3          }   
+C51 COMPILER V9.57.0.0   MAIN                                                              01/01/2023 14:34:22 PAGE 2   
+
+  55   2          out:0XFF;
+*** WARNING C275 IN LINE 55 OF main.c: expression with possibly no effect
+  56   2          //功能4   
+  57   2          if(key==4){LED=0XFF;}
+  58   2        }
+  59   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
