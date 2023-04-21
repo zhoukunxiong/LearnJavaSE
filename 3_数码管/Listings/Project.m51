@@ -1,0 +1,187 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    01/02/2023  16:23:28  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\PROGRAM FILES (X86)\KEIL\MDK\C51\BIN\BL51.EXE .\Objects\main.obj, .\Objects\NixieTube.obj, .\Objects\Delay.obj, .\Obj
+>> ects\getKeyNum.obj TO .\Objects\Project PRINT (.\Listings\Project.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  .\Objects\NixieTube.obj (NIXIETUBE)
+  .\Objects\Delay.obj (DELAY)
+  .\Objects\getKeyNum.obj (GETKEYNUM)
+  D:\PROGRAM FILES (X86)\KEIL\MDK\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\PROGRAM FILES (X86)\KEIL\MDK\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000AH     UNIT         ?DT?NIXIETUBE
+            DATA    0012H     0006H     UNIT         _DATA_GROUP_
+            IDATA   0018H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0071H     UNIT         ?PR?GETKEYNUM?GETKEYNUM
+            CODE    08FDH     0063H     UNIT         ?PR?_NIXIETUBE?NIXIETUBE
+            CODE    0960H     001FH     UNIT         ?PR?MAIN?MAIN
+            CODE    097FH     0019H     UNIT         ?PR?_DELAY?DELAY
+            CODE    0998H     000DH     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Project (MAIN)
+
+
+SEGMENT                            DATA_GROUP 
+  +--> CALLED SEGMENT            START    LENGTH
+------------------------------------------------
+?C_C51STARTUP                    -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                    0012H    0002H
+  +--> ?PR?GETKEYNUM?GETKEYNUM
+  +--> ?PR?_NIXIETUBE?NIXIETUBE
+
+?PR?GETKEYNUM?GETKEYNUM          0014H    0002H
+  +--> ?PR?_DELAY?DELAY
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  16:23:28  PAGE 2
+
+
+?PR?_DELAY?DELAY                 0016H    0002H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0960H         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+  D:0012H         SYMBOL        keyNum
+  D:0013H         SYMBOL        i
+  -------         ENDDO         
+  C:0960H         LINE#         12
+  C:0960H         LINE#         13
+  C:0960H         LINE#         37
+  C:0960H         LINE#         38
+  C:0960H         LINE#         39
+  C:0965H         LINE#         40
+  C:0968H         LINE#         42
+  C:0968H         LINE#         43
+  C:0968H         LINE#         44
+  C:0974H         LINE#         45
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        NIXIETUBE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:00A0H.4       PUBLIC        P2_4
+  C:08FDH         PUBLIC        _nixieTube
+  D:0008H         PUBLIC        arr
+  -------         PROC          _NIXIETUBE
+  D:0007H         SYMBOL        location
+  D:0005H         SYMBOL        number
+  C:08FDH         LINE#         13
+  C:08FDH         LINE#         14
+  C:08FDH         LINE#         15
+  C:092AH         LINE#         16
+  C:092AH         LINE#         17
+  C:092EH         LINE#         18
+  C:0932H         LINE#         19
+  C:0936H         LINE#         20
+  C:093AH         LINE#         21
+  C:0942H         LINE#         22
+  C:094AH         LINE#         23
+  C:0952H         LINE#         24
+  C:0958H         LINE#         25
+  C:0958H         LINE#         26
+  C:095FH         LINE#         27
+  -------         ENDPROC       _NIXIETUBE
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  16:23:28  PAGE 3
+
+
+  -------         ENDMOD        NIXIETUBE
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:097FH         PUBLIC        _Delay
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        mill
+  -------         DO            
+  D:0016H         SYMBOL        i
+  D:0017H         SYMBOL        j
+  -------         ENDDO         
+  C:097FH         LINE#         8
+  C:097FH         LINE#         9
+  C:097FH         LINE#         10
+  C:0989H         LINE#         13
+  C:098CH         LINE#         14
+  C:098FH         LINE#         16
+  C:098FH         LINE#         17
+  C:0992H         LINE#         18
+  C:0995H         LINE#         19
+  C:0997H         LINE#         20
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        GETKEYNUM
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  B:00B0H.3       PUBLIC        key4
+  D:00B0H         PUBLIC        P3
+  C:088CH         PUBLIC        getKeyNum
+  B:00B0H.1       PUBLIC        key1
+  B:00B0H.0       PUBLIC        key2
+  B:00B0H.2       PUBLIC        key3
+  -------         PROC          GETKEYNUM
+  -------         DO            
+  D:0014H         SYMBOL        keyNum
+  -------         ENDDO         
+  C:088CH         LINE#         15
+  C:088CH         LINE#         16
+  C:088CH         LINE#         17
+  C:0891H         LINE#         19
+  C:0894H         LINE#         20
+  C:0894H         LINE#         21
+  C:089AH         LINE#         22
+  C:089DH         LINE#         23
+  C:08A4H         LINE#         24
+  C:08AAH         LINE#         25
+  C:08AAH         LINE#         26
+  C:08C4H         LINE#         27
+  C:08DEH         LINE#         28
+  C:08F8H         LINE#         30
+  C:08FCH         LINE#         31
+  -------         ENDPROC       GETKEYNUM
+  -------         ENDMOD        GETKEYNUM
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0118H BYTE (13%) *
+******************************************************************************
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  01/02/2023  16:23:28  PAGE 4
+
+
+
+Program Size: data=25.0 xdata=0 code=424
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

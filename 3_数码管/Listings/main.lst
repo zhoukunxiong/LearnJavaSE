@@ -1,0 +1,75 @@
+C51 COMPILER V9.57.0.0   MAIN                                                              01/02/2023 16:23:28 PAGE 1   
+
+
+C51 COMPILER V9.57.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\Program Files (x86)\Keil\MDK\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND 
+                    -PRINT(.\Listings\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          /*
+   2           *实现功能：指定数码管显示指定数字
+   3           *功能1：数码管静态显示
+   4           *功能2：数码管动态显示
+   5           *功能3：数码管显示按下的独立按键的键值
+   6           */
+   7          #include <REGX52.H>
+   8          #include "NixieTube.h"
+   9          #include "Delay.h"
+  10          #include "getKeyNum.h"
+  11          
+  12          void main(void)
+  13          {
+  14   1        //功能1
+  15   1      //  nixieTube(4,8);
+  16   1        //功能2
+  17   1      //  while(1)
+  18   1      //  {
+  19   1      //    nixieTube(1,1);
+  20   1      //    Delay(1);
+  21   1      //    nixieTube(2,2);
+  22   1      //    Delay(1);
+  23   1      //    nixieTube(3,3);
+  24   1      //    Delay(1);
+  25   1      //    nixieTube(4,4);
+  26   1      //    Delay(1);
+  27   1      //    nixieTube(5,5);
+  28   1      //    Delay(1);
+  29   1      //    nixieTube(6,6);
+  30   1      //    Delay(1);
+  31   1      //    nixieTube(7,7);
+  32   1      //    Delay(1);
+  33   1      //    nixieTube(8,8);
+  34   1      //    Delay(1);
+  35   1      //  }
+  36   1        //功能3
+  37   1        while(1)
+  38   1        {
+  39   2          unsigned char keyNum=getKeyNum();
+  40   2          unsigned char i=1;
+  41   2          
+  42   2          for(;i<=4;i++)
+  43   2          {
+  44   3            if(keyNum==i) nixieTube(1,i);
+  45   3          }
+  46   2        }
+  47   1        
+  48   1      
+  49   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     31    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.57.0.0   MAIN                                                              01/02/2023 16:23:28 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

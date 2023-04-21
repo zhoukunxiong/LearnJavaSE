@@ -1,0 +1,6 @@
+".\Objects\main.obj",
+".\Objects\NixieTube.obj",
+".\Objects\Delay.obj",
+".\Objects\getKeyNum.obj" 
+TO ".\Objects\Project" 
+PRINT(".\Listings\Project.m51") RAMSIZE(256) 
